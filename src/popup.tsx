@@ -1,6 +1,6 @@
 import { FileOutlined, InboxOutlined } from "@ant-design/icons"
-import { Alert, Button, Checkbox, Input, Tabs, Upload, message } from "antd"
 import type { UploadProps } from "antd"
+import { Alert, Button, Checkbox, Input, Tabs, Upload, message } from "antd"
 import { useEffect, useState } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
