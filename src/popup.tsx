@@ -8,6 +8,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { QiniuConfig, qiniuUpload } from "./api/qiniu"
 import { copyTextToClipboard } from "./utils/copy"
 
+import "antd/dist/reset.css"
 import "./styles/index.css"
 
 const { Dragger } = Upload
@@ -122,7 +123,7 @@ function IndexPopup() {
               </Dragger>
             </div>
           ) : (
-            <div>
+            <div className="mb-2">
               <Alert
                 showIcon
                 message="请先填写配置"
@@ -137,15 +138,17 @@ function IndexPopup() {
           )}
         </Tabs.TabPane>
         <Tabs.TabPane tab="历史记录" key="2">
-          <div className="mb-2 text-right">
-            <Button
-              size="small"
-              onClick={() => setimgList([])}
-              type="primary"
-              danger>
-              清除记录
-            </Button>
-          </div>
+          {imgList.length > 0 && (
+            <div className="mb-2 text-right">
+              <Button
+                size="small"
+                onClick={() => setimgList([])}
+                type="primary"
+                danger>
+                清除记录
+              </Button>
+            </div>
+          )}
           {imgList?.map((fileName) => (
             <FileItem md={md} fileName={fileName} key={fileName} />
           ))}

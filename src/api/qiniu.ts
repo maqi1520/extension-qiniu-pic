@@ -1,4 +1,5 @@
-import CryptoJS from "crypto-js"
+import Base64 from "crypto-js/enc-base64"
+import HmacSHA1 from "crypto-js/hmac-sha1"
 import { customRandom, random, urlAlphabet } from "nanoid"
 import * as qiniu from "qiniu-js"
 
@@ -22,8 +23,9 @@ function getDateFilename(filename = "") {
 function getQiniuToken(accessKey, secretKey, putPolicy) {
   const policy = JSON.stringify(putPolicy)
   const encoded = base64encode(utf16to8(policy))
-  const hash = CryptoJS.HmacSHA1(encoded, secretKey)
-  const encodedSigned = hash.toString(CryptoJS.enc.Base64)
+  const hash = HmacSHA1(encoded, secretKey)
+  const encodedSigned = hash.toString(Base64)
+
   return `${accessKey}:${safe64(encodedSigned)}:${encoded}`
 }
 
