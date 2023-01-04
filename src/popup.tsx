@@ -101,9 +101,9 @@ function IndexPopup() {
     <div
       style={{
         width: 220,
-        margin: "0 8px 8px"
+        padding: "0 8px 8px"
       }}>
-      <Tabs defaultActiveKey="1" type="line">
+      <Tabs animated={false} defaultActiveKey="1" type="line">
         <Tabs.TabPane tab="上传" key="1">
           {qiniuConfig.accessKey ? (
             <div>
@@ -137,7 +137,7 @@ function IndexPopup() {
             </div>
           )}
         </Tabs.TabPane>
-        <Tabs.TabPane tab="历史记录" key="2">
+        <Tabs.TabPane style={{height:250,overflow:'auto'}} tab="历史记录" key="2">
           {imgList.length > 0 && (
             <div className="mb-2 text-right">
               <Button
